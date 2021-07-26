@@ -9,74 +9,71 @@ public class Radio {
     private int maxVolume = 10;
     private int minVolume = 0;
 
-
-    //увеличение громкости
-    public int increaseVolume() {
-        int currentVolume= 10;
-        if (currentVolume < maxVolume) {
-            currentVolume = currentVolume + 1;
-        }
-        if (currentVolume == maxVolume) {
-            currentVolume = maxVolume;
-        }
-
-        return currentVolume;
-    }
-
-    //уменьшение громкости
-    public int feduceVolume() {
-        int currentVolume=0;
-        if (currentVolume > minVolume) {
-            currentVolume = currentVolume - 1;
-        }
-        if (currentVolume == minVolume) {
-            currentVolume = minVolume;
-        }
-
-        return currentVolume;
-    }
-
-
-    //через пульт
-    public void setPultRadioStation(int radioStation) {
-        if (radioStation < firstRadioStation) {
-            return;
-        }
-        if (radioStation > lastRadioStation) {
-            return;
-        }
-        currentRadioStation = radioStation;
+    // присвоение приватной переменной currentStation
+    public void setCurrentRadioStation(int newCurrentRadioStation) {
+        currentRadioStation = newCurrentRadioStation;
     }
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
+    // присвоение приватной переменной currentVolume
+    public void setCurrentVolume(int newCurrentVolume) {
+        currentVolume = newCurrentVolume;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
 
     //следующая станция
-    public int nextRadioStation() {
-        int currentRadioStation = 9;
-        if (currentRadioStation < lastRadioStation) {
+    public void setNextRadioStation() {
+        if (currentRadioStation != lastRadioStation) {
             currentRadioStation = currentRadioStation + 1;
-        }
-        if (currentRadioStation == lastRadioStation) {
+        } else {
             currentRadioStation = firstRadioStation;
         }
-        return currentRadioStation;
     }
 
     //предыдущая станция
-    public int prevRadioStation() {
-        int currentRadioStation = 0;
-        if (currentRadioStation > firstRadioStation) {
+    public void setPrevRadioStation() {
+        if (currentRadioStation != firstRadioStation) {
             currentRadioStation = currentRadioStation - 1;
-        }
-        if (currentRadioStation == firstRadioStation) {
+        } else {
             currentRadioStation = lastRadioStation;
         }
-        return currentRadioStation;
     }
 
+    //через пульт
+    public void setNumberRadioStationFromPult(int newCurrentRadioStation) {
+        if (newCurrentRadioStation < firstRadioStation) {
+            return;
+        }
+        if (newCurrentRadioStation > lastRadioStation) {
+            return;
+        }
+        currentRadioStation = newCurrentRadioStation;
+    }
+
+    //увеличение громкости
+    public void setIncreaseVolume() {
+        if (currentVolume != maxVolume) {
+            currentVolume = currentVolume + 1;
+        } else {
+            currentVolume = maxVolume;
+        }
+    }
+
+    //уменьшение громкости
+    public void setFeduceVolume() {
+        if (currentVolume != minVolume) {
+            currentVolume = currentVolume - 1;
+        } else {
+            currentVolume = minVolume;
+        }
+    }
 }
 
 

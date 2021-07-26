@@ -6,54 +6,48 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadioTest {
 
+
     @Test
-    public void shouldIncreaseVolume() {
+    void shouldSetNextRadioStation() {
         Radio radio = new Radio();
-        radio.increaseVolume();
-
-        assertEquals(10, radio.increaseVolume());
+        radio.setCurrentRadioStation(6);
+        radio.setNextRadioStation();
+        assertEquals(7, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void shouldFeduceVolume() {
+    public void shouldSetPrevRadioStation() {
         Radio radio = new Radio();
-        radio.feduceVolume();
-
-        assertEquals(0, radio.feduceVolume());
+        radio.setCurrentRadioStation(2);
+        radio.setPrevRadioStation();
+        assertEquals(1, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void shouldsetPultRadioStation() {
+    public void setNumberRadioStationFromPult() {
         Radio radio = new Radio();
-        radio.setPultRadioStation(8);
+        radio.setNumberRadioStationFromPult(5);
 
-        radio.setPultRadioStation(6);
-
-        assertEquals(6, radio.getCurrentRadioStation());
+        assertEquals(5, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void shouldNextRadioStation(){
-        Radio radio= new Radio();
-        radio.nextRadioStation();
-        assertEquals(0,radio.nextRadioStation());
+    public void shouldSetIncreaseVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(4);
+        radio.setIncreaseVolume();
+
+        assertEquals(5, radio.getCurrentVolume());
     }
 
     @Test
-    public void shouldPrevRadioStation(){
-        Radio radio= new Radio();
-        radio.prevRadioStation();
-        assertEquals(9,radio.prevRadioStation());
+    public void shouldSetFeduceVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(1);
+        radio.setFeduceVolume();
+
+        assertEquals(0, radio.getCurrentVolume());
     }
 
 
 }
-
-// public void shouldSetUpRadioStationToSteps (){
-
-//    Radio radio= new Radio();
-
-//    radio.setUpRadioStationToSteps();
-
-//  assertEquals(6, radio.getUpRadioStationToSteps()  );
-
